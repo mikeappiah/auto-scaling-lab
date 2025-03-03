@@ -3,37 +3,11 @@ Description:
   CloudFormation template to deploy an Auto Scaling Group with an Apache Web Server,
   an Application Load Balancer (ALB), and scaling policies based on CPU utilization.
 
-Parameters:
-  VpcCIDR:
-    Description: CIDR block for the VPC
-    Type: String
-    Default: 10.0.0.0/16
-
-  PublicSubnet1CIDR:
-    Description: CIDR block for the first public subnet
-    Type: String
-    Default: 10.0.1.0/24
-
-  PublicSubnet2CIDR:
-    Description: CIDR block for the second public subnet
-    Type: String
-    Default: 10.0.2.0/24
-
-  PrivateSubnet1CIDR:
-    Description: CIDR block for the first private subnet
-    Type: String
-    Default: 10.0.3.0/24
-
-  PrivateSubnet2CIDR:
-    Description: CIDR block for the second private subnet
-    Type: String
-    Default: 10.0.4.0/24
-
 Resources:
   VPC:
     Type: AWS::EC2::VPC
     Properties:
-      CidrBlock: !Ref VpcCIDR
+      CidrBlock: 10.0.0.0/16
       EnableDnsSupport: true
       EnableDnsHostnames: true
       Tags:
@@ -58,7 +32,7 @@ Resources:
     Properties:
       VpcId: !Ref VPC
       AvailabilityZone: !Select [0, !GetAZs '']
-      CidrBlock: !Ref PublicSubnet1CIDR
+      CidrBlock: 10.0.1.0/24
       MapPublicIpOnLaunch: true
       Tags:
         - Key: Name
@@ -69,7 +43,7 @@ Resources:
     Properties:
       VpcId: !Ref VPC
       AvailabilityZone: !Select [1, !GetAZs '']
-      CidrBlock: !Ref PublicSubnet2CIDR
+      CidrBlock: 10.0.2.0/24
       MapPublicIpOnLaunch: true
       Tags:
         - Key: Name
@@ -80,7 +54,7 @@ Resources:
     Properties:
       VpcId: !Ref VPC
       AvailabilityZone: !Select [0, !GetAZs '']
-      CidrBlock: !Ref PrivateSubnet1CIDR
+      CidrBlock: 10.0.3.0/24
       MapPublicIpOnLaunch: false
       Tags:
         - Key: Name
@@ -91,7 +65,7 @@ Resources:
     Properties:
       VpcId: !Ref VPC
       AvailabilityZone: !Select [1, !GetAZs '']
-      CidrBlock: !Ref PrivateSubnet2CIDR
+      CidrBlock: 10.0.4.0/24
       MapPublicIpOnLaunch: false
       Tags:
         - Key: Name
@@ -310,12 +284,3 @@ Outputs:
       - ''
       - - 'http://'
         - !GetAtt ApplicationLoadBalancer.DNSName
-  VpcId:
-    Description: The ID of the VPC
-    Value: !Ref VPC
-  PublicSubnets:
-    Description: A list of the public subnets
-    Value: !Join [',', [!Ref PublicSubnet1, !Ref PublicSubnet2]]
-  PrivateSubnets:
-    Description: A list of the private subnets
-    Value: !Join [',', [!Ref PrivateSubnet1, !Ref PrivateSubnet2]]

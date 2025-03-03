@@ -51,3 +51,7 @@ Demonstrate automatic scaling by CloudFormation to deploy an Apache web server t
 ### Auto Scaling of EC2 on stress
 
 <img width="959" alt="Image" src="https://github.com/user-attachments/assets/6b828249-33b9-4d9c-9399-790b96775022" />
+
+### Pull Request from Git Sync
+
+<img width="959" alt="Image" src="https://github.com/user-attachments/assets/2ae1b637-cc3a-4cce-8608-c8ddd6008f5d" />
