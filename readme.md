@@ -54,4 +54,8 @@ Demonstrate automatic scaling by CloudFormation to deploy an Apache web server t
 
 ### Pull Request from Git Sync
 
-<img width="959" alt="Image" src="https://github.com/user-attachments/assets/2ae1b637-cc3a-4cce-8608-c8ddd6008f5d" />
+<img width="958" alt="Image" src="https://github.com/user-attachments/assets/31072c9a-ecc3-4ff3-a1aa-4ef34f313b43" />
+
+### Git Synced Stack
+
+<img width="959" alt="Image" src="https://github.com/user-attachments/assets/ab707501-b0db-48cb-a1f9-0c8834bf1cb7" />
